@@ -6,12 +6,19 @@
     "license": "MIT",
     "require": {
         "php": "^7.4 || ^8.0",
-        "codeigniter4/framework": "^4.0"
+        "codeigniter4/framework": "^4.0",
+        "tatter/alerts": "dev-develop",
+        "codeigniter4/shield": "dev-develop",
+        "irsyadulibad/codeigniter4-datatables": "dev-master",
+        "asligresik/easyapi": "dev-master",
+        "pragmarx/ia-arr": "^7.3",
+        "tatter/menus": "dev-develop"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9",
         "mikey179/vfsstream": "^1.6",
-        "phpunit/phpunit": "^9.1"
+        "phpunit/phpunit": "^9.1",
+        "phpstan/phpstan": "1.8.x-dev"
     },
     "suggest": {
         "ext-fileinfo": "Improves mime type detection for files"
@@ -26,12 +33,22 @@
             "Tests\\Support\\": "tests/_support"
         }
     },
-    "scripts": {
-        "test": "phpunit"
+    "scripts": {        
+        "analyze": "phpstan analyze",
+		"ci": [
+			"Composer\\Config::disableProcessTimeout",		
+			"@analyze",
+			"@test",			
+			"@style"
+		],				
+		"style": "php-cs-fixer fix --verbose --ansi --using-cache=no",
+		"swagger-doc":"openapi -o public/assets/api.yaml app",
+		"test": "phpunit"	
     },
     "support": {
         "forum": "http://forum.codeigniter.com/",
         "source": "https://github.com/codeigniter4/CodeIgniter4",
         "slack": "https://codeigniterchat.slack.com"
-    }
+    },
+    "minimum-stability": "dev"
 }

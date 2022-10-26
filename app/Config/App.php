@@ -7,6 +7,8 @@ use CodeIgniter\Session\Handlers\FileHandler;
 
 class App extends BaseConfig
 {
+    /** app name */
+    public $name = "CI4 starter easydev";
     /**
      * --------------------------------------------------------------------------
      * Base Site URL
@@ -461,5 +463,7 @@ class App extends BaseConfig
      *
      * @var bool
      */
-    public $CSPEnabled = false;
+    public $CSPEnabled = false;    
+
+    public $perPage = 15;
 }

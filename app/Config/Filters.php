@@ -8,6 +8,9 @@ use CodeIgniter\Filters\DebugToolbar;
 use CodeIgniter\Filters\Honeypot;
 use CodeIgniter\Filters\InvalidChars;
 use CodeIgniter\Filters\SecureHeaders;
+use Sparks\Shield\Filters\ChainAuth;
+use Sparks\Shield\Filters\SessionAuth;
+use Sparks\Shield\Filters\TokenAuth;
 
 class Filters extends BaseConfig
 {
@@ -23,6 +26,11 @@ class Filters extends BaseConfig
         'honeypot'      => Honeypot::class,
         'invalidchars'  => InvalidChars::class,
         'secureheaders' => SecureHeaders::class,
+        'session'       => SessionAuth::class,
+        'tokens'        => TokenAuth::class,
+        'chain'         => ChainAuth::class,
+        'admin'         => Admin::class,
+        'api'           => ApiAuth::class,
     ];
 
     /**
@@ -39,6 +47,7 @@ class Filters extends BaseConfig
         ],
         'after' => [
             'toolbar',
+            'alerts',
             // 'honeypot',
             // 'secureheaders',
         ],
@@ -57,7 +66,9 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $methods = [];
+    public $methods = [
+        'post' => ['csrf']
+    ];
 
     /**
      * List of filter aliases that should run on any
@@ -68,5 +79,7 @@ class Filters extends BaseConfig
      *
      * @var array
      */
-    public $filters = [];
+    public $filters = [
+        'session' => ['before' => ['admin/*']]
+    ];
 }

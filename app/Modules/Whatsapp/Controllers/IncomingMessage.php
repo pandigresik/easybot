@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Controllers;
+namespace App\Modules\Whatsapp\Controllers;
+
+use App\Controllers\BaseController;
 
 class IncomingMessage extends BaseController
 {
+    private $easywaServer;
+    private $easywaNumber;
     private $allowGroup = [
         'easywagroup' => '120363023432962472@g.us',
         'attauhidgroup' => '6285745938168-1441642841@g.us',
@@ -73,9 +77,17 @@ class IncomingMessage extends BaseController
     private $notFoundMessage = ['message' => ['text' => 'Jawaban {{message}} tidak ditemukan']];
     public function index()
     {
+        $easywa = config('Easywa');
         $message = trim($this->request->getPost('message'));
         $sender = $this->request->getPost('sender');
-        $replyMessage = $this->getResponseMessage($message, $sender);
+        $easywaServer = $this->request->getGet('server') ?? $easywa->server;
+        $easywaNumber = $this->request->getGet('number') ?? $easywa->number;
+        $this->setEasywaServer($easywaServer);
+        $this->setEasywaNumber($easywaNumber);
+        $replyMessage = null;
+        if (starts_with($message, '/')) {
+            $replyMessage = $this->getResponseMessage($message, $sender);
+        }
 
         if (!empty($replyMessage)) {
             $this->sendWhatsapp($sender, $replyMessage);
@@ -98,10 +110,11 @@ class IncomingMessage extends BaseController
     private function sendWhatsapp($to, $message)
     {
         $message['to'] = $to;
-        $easywa = config('Easywa');
+
         $client = \Config\Services::curlrequest([
-            'baseURI' => "{$easywa->server}/sendmessage?number={$easywa->number}",
+            'baseURI' => "{$this->getEasywaServer()}/sendmessage?number={$this->getEasywaNumber()}",
         ]);
+
         $client->post('', ['json' => $message]);
     }
 
@@ -317,5 +330,45 @@ konfirmasi transfer ke nomor
         ];
 
         return $defaultMessage[$message] ?? $this->getNotFoundMessage($message);
+    }
+
+    /**
+     * Get the value of easywaNumber
+     */
+    public function getEasywaNumber()
+    {
+        return $this->easywaNumber;
+    }
+
+    /**
+     * Set the value of easywaNumber
+     *
+     * @return  self
+     */
+    public function setEasywaNumber($easywaNumber)
+    {
+        $this->easywaNumber = $easywaNumber;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of easywaServer
+     */
+    public function getEasywaServer()
+    {
+        return $this->easywaServer;
+    }
+
+    /**
+     * Set the value of easywaServer
+     *
+     * @return  self
+     */
+    public function setEasywaServer($easywaServer)
+    {
+        $this->easywaServer = $easywaServer;
+
+        return $this;
     }
 }

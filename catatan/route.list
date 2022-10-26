@@ -1,0 +1,70 @@
+
+CodeIgniter v4.2.6 Command Line Tool - Server Time: 2022-09-08 15:04:44 UTC+07:00
+
++--------+-------------------------------+--------------------------------------------------------------------+----------------+----------------+
+| Method | Route                         | Handler                                                            | Before Filters | After Filters  |
++--------+-------------------------------+--------------------------------------------------------------------+----------------+----------------+
+| GET    | /                             | \App\Controllers\Home::index                                       |                | alerts toolbar |
+| GET    | register                      | \CodeIgniter\Shield\Controllers\RegisterController::registerView   |                | alerts toolbar |
+| GET    | login                         | \CodeIgniter\Shield\Controllers\LoginController::loginView         |                | alerts toolbar |
+| GET    | login/magic-link              | \CodeIgniter\Shield\Controllers\MagicLinkController::loginView     |                | alerts toolbar |
+| GET    | login/verify-magic-link       | \CodeIgniter\Shield\Controllers\MagicLinkController::verify        |                | alerts toolbar |
+| GET    | logout                        | \CodeIgniter\Shield\Controllers\LoginController::logoutAction      |                | alerts toolbar |
+| GET    | auth/a/show                   | \CodeIgniter\Shield\Controllers\ActionController::show             |                | alerts toolbar |
+| GET    | admin/autoResponses           | \App\Modules\Admin\Controllers\AutoResponses::index                | session        | alerts toolbar |
+| GET    | admin/autoResponses/new       | \App\Modules\Admin\Controllers\AutoResponses::new                  | session        | alerts toolbar |
+| GET    | admin/autoResponses/(.*)/edit | \App\Modules\Admin\Controllers\AutoResponses::edit/$1              | session        | alerts toolbar |
+| GET    | admin/autoResponses/(.*)      | \App\Modules\Admin\Controllers\AutoResponses::show/$1              | session        | alerts toolbar |
+| GET    | admin/contacts                | \App\Modules\Admin\Controllers\Contacts::index                     | session        | alerts toolbar |
+| GET    | admin/contacts/new            | \App\Modules\Admin\Controllers\Contacts::new                       | session        | alerts toolbar |
+| GET    | admin/contacts/(.*)/edit      | \App\Modules\Admin\Controllers\Contacts::edit/$1                   | session        | alerts toolbar |
+| GET    | admin/contacts/(.*)           | \App\Modules\Admin\Controllers\Contacts::show/$1                   | session        | alerts toolbar |
+| GET    | admin/projects                | \App\Modules\Admin\Controllers\Projects::index                     | session        | alerts toolbar |
+| GET    | admin/projects/new            | \App\Modules\Admin\Controllers\Projects::new                       | session        | alerts toolbar |
+| GET    | admin/projects/(.*)/edit      | \App\Modules\Admin\Controllers\Projects::edit/$1                   | session        | alerts toolbar |
+| GET    | admin/projects/(.*)           | \App\Modules\Admin\Controllers\Projects::show/$1                   | session        | alerts toolbar |
+| GET    | api/autoResponses             | \App\Modules\Api\Controllers\AutoResponses::index                  |                | alerts toolbar |
+| GET    | api/autoResponses/new         | \App\Modules\Api\Controllers\AutoResponses::new                    |                | alerts toolbar |
+| GET    | api/autoResponses/(.*)/edit   | \App\Modules\Api\Controllers\AutoResponses::edit/$1                |                | alerts toolbar |
+| GET    | api/autoResponses/(.*)        | \App\Modules\Api\Controllers\AutoResponses::show/$1                |                | alerts toolbar |
+| GET    | api/contacts                  | \App\Modules\Api\Controllers\Contacts::index                       |                | alerts toolbar |
+| GET    | api/contacts/new              | \App\Modules\Api\Controllers\Contacts::new                         |                | alerts toolbar |
+| GET    | api/contacts/(.*)/edit        | \App\Modules\Api\Controllers\Contacts::edit/$1                     |                | alerts toolbar |
+| GET    | api/contacts/(.*)             | \App\Modules\Api\Controllers\Contacts::show/$1                     |                | alerts toolbar |
+| GET    | api/projects                  | \App\Modules\Api\Controllers\Projects::index                       |                | alerts toolbar |
+| GET    | api/projects/new              | \App\Modules\Api\Controllers\Projects::new                         |                | alerts toolbar |
+| GET    | api/projects/(.*)/edit        | \App\Modules\Api\Controllers\Projects::edit/$1                     |                | alerts toolbar |
+| GET    | api/projects/(.*)             | \App\Modules\Api\Controllers\Projects::show/$1                     |                | alerts toolbar |
+| POST   | incomingMessage               | \App\Controllers\IncomingMessage::index                            | csrf           | alerts toolbar |
+| POST   | register                      | \CodeIgniter\Shield\Controllers\RegisterController::registerAction | csrf           | alerts toolbar |
+| POST   | login                         | \CodeIgniter\Shield\Controllers\LoginController::loginAction       | csrf           | alerts toolbar |
+| POST   | login/magic-link              | \CodeIgniter\Shield\Controllers\MagicLinkController::loginAction   | csrf           | alerts toolbar |
+| POST   | auth/a/handle                 | \CodeIgniter\Shield\Controllers\ActionController::handle           | csrf           | alerts toolbar |
+| POST   | auth/a/verify                 | \CodeIgniter\Shield\Controllers\ActionController::verify           | csrf           | alerts toolbar |
+| POST   | admin/autoResponses           | \App\Modules\Admin\Controllers\AutoResponses::create               | csrf session   | alerts toolbar |
+| POST   | admin/contacts                | \App\Modules\Admin\Controllers\Contacts::create                    | csrf session   | alerts toolbar |
+| POST   | admin/projects                | \App\Modules\Admin\Controllers\Projects::create                    | csrf session   | alerts toolbar |
+| POST   | api/autoResponses             | \App\Modules\Api\Controllers\AutoResponses::create                 | csrf           | alerts toolbar |
+| POST   | api/contacts                  | \App\Modules\Api\Controllers\Contacts::create                      | csrf           | alerts toolbar |
+| POST   | api/projects                  | \App\Modules\Api\Controllers\Projects::create                      | csrf           | alerts toolbar |
+| PATCH  | admin/autoResponses/(.*)      | \App\Modules\Admin\Controllers\AutoResponses::update/$1            | session        | alerts toolbar |
+| PATCH  | admin/contacts/(.*)           | \App\Modules\Admin\Controllers\Contacts::update/$1                 | session        | alerts toolbar |
+| PATCH  | admin/projects/(.*)           | \App\Modules\Admin\Controllers\Projects::update/$1                 | session        | alerts toolbar |
+| PATCH  | api/autoResponses/(.*)        | \App\Modules\Api\Controllers\AutoResponses::update/$1              |                | alerts toolbar |
+| PATCH  | api/contacts/(.*)             | \App\Modules\Api\Controllers\Contacts::update/$1                   |                | alerts toolbar |
+| PATCH  | api/projects/(.*)             | \App\Modules\Api\Controllers\Projects::update/$1                   |                | alerts toolbar |
+| PUT    | admin/autoResponses/(.*)      | \App\Modules\Admin\Controllers\AutoResponses::update/$1            | session        | alerts toolbar |
+| PUT    | admin/contacts/(.*)           | \App\Modules\Admin\Controllers\Contacts::update/$1                 | session        | alerts toolbar |
+| PUT    | admin/projects/(.*)           | \App\Modules\Admin\Controllers\Projects::update/$1                 | session        | alerts toolbar |
+| PUT    | api/autoResponses/(.*)        | \App\Modules\Api\Controllers\AutoResponses::update/$1              |                | alerts toolbar |
+| PUT    | api/contacts/(.*)             | \App\Modules\Api\Controllers\Contacts::update/$1                   |                | alerts toolbar |
+| PUT    | api/projects/(.*)             | \App\Modules\Api\Controllers\Projects::update/$1                   |                | alerts toolbar |
+| DELETE | admin/autoResponses/(.*)      | \App\Modules\Admin\Controllers\AutoResponses::delete/$1            | session        | alerts toolbar |
+| DELETE | admin/contacts/(.*)           | \App\Modules\Admin\Controllers\Contacts::delete/$1                 | session        | alerts toolbar |
+| DELETE | admin/projects/(.*)           | \App\Modules\Admin\Controllers\Projects::delete/$1                 | session        | alerts toolbar |
+| DELETE | api/autoResponses/(.*)        | \App\Modules\Api\Controllers\AutoResponses::delete/$1              |                | alerts toolbar |
+| DELETE | api/contacts/(.*)             | \App\Modules\Api\Controllers\Contacts::delete/$1                   |                | alerts toolbar |
+| DELETE | api/projects/(.*)             | \App\Modules\Api\Controllers\Projects::delete/$1                   |                | alerts toolbar |
+| CLI    | ci(.*)                        | \CodeIgniter\CLI\CommandRunner::index/$1                           |                |                |
++--------+-------------------------------+--------------------------------------------------------------------+----------------+----------------+
+
